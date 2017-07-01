@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Chitaric's testwork</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function customUrlOpen() {
+			document.getElementById("customUrlButton").hidden = true;
+			document.getElementById("customUrlField").hidden = false;
+
+			document.getElementById("submitUrlButton").style = "height:50px;";
+		}
+
+		function cleanUrl() {
+			if (document.getElementById("customUrlField").hidden) {
+				document.getElementById("customUrl").value = null;
+			}
+		}
+	</script>
+
+	<form id="formAddUrl" action="php/url/convert.php" target="resultUrl" method="post">
+	<table border="0" align="center">
+		<tr><th style="text-align:left">Введите ссылку</th></tr>
+		<tr>
+			<td><table style="border:0">
+				<tr><td><input id="inputUrl" name="inputUrl" size="80" title="Введите сюда ссылку, которую хотите сократить" /></td></tr>
+				<tr id="customUrlField" hidden><td style="text-decoration: none">
+					http://cw04662.tmweb.ru/<input id="customUrl" name="customUrl" size="54" title="Введите, как вы хотите, чтоб выглядела ссылка" />
+				</td></tr>
+			</table></td>
+			<td><input id="submitUrlButton" type="submit" value="Сгенерировать" onclick="cleanUrl();" /></td>
+			<td><input id="customUrlButton" type="button" value="Своя ссылка" onclick="cleanUrl(); customUrlOpen();" /></td>
+		</tr>
+		<!-- Окно с результатом -->
+		<tr><td><iframe name="resultUrl" width="100%" frameborder="no" seamless></iframe></td></tr>
+	</table>
+	</form>
+</body>
+</html>
